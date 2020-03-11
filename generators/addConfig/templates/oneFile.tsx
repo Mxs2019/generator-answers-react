@@ -9,11 +9,11 @@ const config: T.AnswersConfig = {
   version: "STAGING",
   verticals: {<% verticals.map((v)=>{%>
     <%= v %>: {
-        title: "<%= v %>",
-        icon: Icons.FaCircle
-        card: {
-            mapping: {}
-        }
+      title: "<%= v %>",
+      icon: Icons.FaCircle,
+      card: {
+        mapping: {}
+      }
     },<%}) %>
   },
   components: {
