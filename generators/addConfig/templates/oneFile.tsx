@@ -1,5 +1,6 @@
 import React from "react";
 import * as T from "../../answers/Types";
+import * as Icons from "react-icons/fa"
 
 const config: T.AnswersConfig = {
   businessID: "<%= businessID %>",
@@ -9,6 +10,7 @@ const config: T.AnswersConfig = {
   verticals: {<% verticals.map((v)=>{%>
     <%= v %>: {
         title: "<%= v %>",
+        icon: Icons.FaCircle
         card: {
             mapping: {}
         }

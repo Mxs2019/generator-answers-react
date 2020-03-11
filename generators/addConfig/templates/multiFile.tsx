@@ -1,4 +1,6 @@
+import React from "react";
 import * as T from "../../answers/Types";
+
 <% verticals.map((v)=>{%>import <%= v %> from "./<%= v %>"
 <%}) %>
 
