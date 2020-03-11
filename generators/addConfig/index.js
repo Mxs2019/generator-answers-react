@@ -85,8 +85,4 @@ module.exports = class extends Generator {
         break;
     }
   }
-
-  finish() {
-    this.log("Added Config!");
-  }
 };

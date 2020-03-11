@@ -5,9 +5,9 @@ const yosay = require("yosay");
 const { exec } = require("child_process");
 
 // Sub Generators
+
 const ADD_PAGE = "Add a Page (Universal or Vertical Search)";
 const ADD_CONFIG = "Generate a new Config (config.tsx) file";
-
 const COMMANDS = [ADD_PAGE, ADD_CONFIG];
 
 module.exports = class extends Generator {
