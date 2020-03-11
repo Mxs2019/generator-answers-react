@@ -41,8 +41,8 @@ module.exports = class extends Generator {
       const prompts = [
         {
           type: "input",
-          name: "verticalKey",
-          message: chalk`What is the {green verticalKey} of the page you want to make?`
+          name: "verticalKeysString",
+          message: chalk`What is the {green verticalKey} of the page you want to make (use comma seperated list to make multiple at the same time)?`
         }
       ];
 
@@ -57,42 +57,42 @@ module.exports = class extends Generator {
     var templatePath = null;
 
     const { pageType } = this.props;
-    const { verticalKey } = this.options;
-
-    switch (this.props.pageType) {
-      case UNIVERSAL_SEARCH:
-        templatePath = this.templatePath("universalSearch.tsx");
-
-        break;
-      case VERTICAL_SEARCH_WITH_FACETS:
-        templatePath = this.templatePath("verticalSearchWithFacets.tsx");
-
-        break;
-      case VERTICAL_SEARCH:
-        templatePath = this.templatePath("verticalSearch.tsx");
-
-        break;
-
-      default:
-        break;
-    }
+    const { verticalKeysString } = this.options;
+    const verticalKeys = verticalKeysString.split(", ");
 
     const capatilize = string => {
       return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
-    const templateDate =
-      pageType === UNIVERSAL_SEARCH
-        ? { pageName: "UniversalSearchPage" }
-        : { pageName: `${capatilize(verticalKey)}Page`, verticalKey };
+    const createVerticalPages = (verticalKeys, templatePath) => {
+      verticalKeys.forEach(verticalKey => {
+        this.fs.copyTpl(templatePath, `src/pages/${verticalKey}.tsx`, {
+          pageName: `${capatilize(verticalKey)}Page`,
+          verticalKey
+        });
+      });
+    };
 
-    const pagePath =
-      pageType === UNIVERSAL_SEARCH
-        ? `src/pages/index.tsx`
-        : `src/pages/${verticalKey}.tsx`;
+    switch (pageType) {
+      case UNIVERSAL_SEARCH:
+        this.fs.copyTpl(
+          this.templatePath("universalSearch.tsx"),
+          "UniversalSearchPage",
+          { pageName: "UniversalSearchPage" }
+        );
 
-    if (templatePath) {
-      this.fs.copyTpl(templatePath, pagePath, templateDate);
+        break;
+      case VERTICAL_SEARCH_WITH_FACETS:
+        templatePath = this.templatePath("verticalSearchWithFacets.tsx");
+        createVerticalPages(verticalKeys, templatePath);
+        break;
+      case VERTICAL_SEARCH:
+        templatePath = this.templatePath("verticalSearch.tsx");
+        createVerticalPages(verticalKeys, templatePath);
+        break;
+
+      default:
+        break;
     }
   }
 
