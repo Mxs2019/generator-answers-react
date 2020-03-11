@@ -23,7 +23,7 @@ const config: T.AnswersConfig = {
     },
     SearchBar: {
       placeholderText:
-        "Search for locations, faq, packages, products and more..."
+        "Search for <% verticals.map((v)=>{%><%= v %>, <%}) %>and more..."
     }
   },
   conversionTracking: true
