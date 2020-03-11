@@ -58,7 +58,9 @@ module.exports = class extends Generator {
 
     const { pageType } = this.props;
     const { verticalKeysString } = this.options;
-    const verticalKeys = verticalKeysString.split(", ");
+    const verticalKeys = verticalKeysString
+      ? verticalKeysString.split(", ")
+      : null;
 
     const capatilize = string => {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -77,8 +79,8 @@ module.exports = class extends Generator {
       case UNIVERSAL_SEARCH:
         this.fs.copyTpl(
           this.templatePath("universalSearch.tsx"),
-          "UniversalSearchPage",
-          { pageName: "UniversalSearchPage" }
+          "src/pages/index.tsx",
+          { pageName: "UniversalPage" }
         );
 
         break;
