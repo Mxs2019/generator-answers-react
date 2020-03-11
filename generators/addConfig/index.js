@@ -73,7 +73,6 @@ module.exports = class extends Generator {
         );
 
         verticals.forEach(v => {
-          console.log(v);
           this.fs.copyTpl(
             this.templatePath("verticalConfig.tsx"),
             `src/answersConfig/${v}.tsx`,
