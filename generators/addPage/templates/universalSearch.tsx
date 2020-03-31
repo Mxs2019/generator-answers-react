@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "../components/layout";
 import config from "../answersConfig/config";
-import { UniversalSearchPage } from "../../answers/Answers";
+import { Layouts } from "../../answers"
 
 const <%= pageName %> = () => {
   return (
     <Layout>
-      <UniversalSearchPage config={config}></UniversalSearchPage>
+      <Layouts.UniversalSearchPage config={config} />
     </Layout>
   );
 };

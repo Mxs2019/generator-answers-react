@@ -1,18 +1,12 @@
-import React from "react"
-import * as T from "../../answers/Types";
+// import React from "react"
+import { Types } from "../../answers"
 import * as Icons from "react-icons/fa"
-import StandardCard from "../../answers/overridableComponents/resultCards/cardContainers/StandardCard"
 
-const <%= verticalKey %>Card = ({ profile, ...props }) => (
-  <StandardCard title={profile.name} url={profile.website} {...props}>
-    {profile.description}
-  </StandardCard>
-)
-
-const <%= verticalKey %>Config: T.VerticalConfig = {
+const <%= verticalKey %>Config: Types.VerticalConfig = {
   title: "<%= verticalKey %>",
   icon: Icons.FaCircle,
-  card: <%= verticalKey %>Card
+  universalSectionShowMap: false,
+  sortOptions: []
 };
 
 export default <%= verticalKey %>Config;

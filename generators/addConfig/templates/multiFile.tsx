@@ -1,10 +1,9 @@
 import React from "react";
-import * as T from "../../answers/Types";
+import { Types } from "../../answers"
 
 <% verticals.map((v)=>{%>import <%= v %> from "./<%= v %>"
 <%}) %>
-
-const config: T.AnswersConfig = {
+const config: Types.Config = {
   businessID: "<%= businessID %>",
   apiKey: "<%= apiKey %>",
   experienceKey: "<%= experienceKey %>",

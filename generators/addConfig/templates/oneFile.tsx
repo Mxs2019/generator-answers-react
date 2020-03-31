@@ -1,8 +1,8 @@
 import React from "react";
-import * as T from "../../answers/Types";
+import { Types } from "../../answers"
 import * as Icons from "react-icons/fa"
 
-const config: T.AnswersConfig = {
+const config: Types.Config = {
   businessID: "<%= businessID %>",
   apiKey: "<%= apiKey %>",
   experienceKey: "<%= experienceKey %>",

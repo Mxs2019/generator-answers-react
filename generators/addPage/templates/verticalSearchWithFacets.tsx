@@ -1,12 +1,15 @@
 import React from "react";
 import Layout from "../components/layout";
 import answersConfig from "../answersConfig/config";
-import VerticalSearchWithFacets from "../../answers/pageComponents/VerticalSearchWithFacetsPage";
+import { Layouts } from "../../answers"
 
 const <%= pageName %> = () => {
   return (
     <Layout>
-      <VerticalSearchWithFacets config={answersConfig} verticalKey="<%= verticalKey %>" />
+      <Layouts.VerticalSearchWithFacetsPage
+        config={answersConfig}
+        verticalKey="<%= verticalKey %>"
+      />
     </Layout>
   );
 };
